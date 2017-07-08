@@ -6,6 +6,7 @@ import Lightwallet from 'eth-lightwallet';
 import {
   DEFAULT_PATH,
   DEFAULT_ACCOUNTS,
+  HD_PATH,
   PREFIX,
 } from '../constants';
 
@@ -68,6 +69,7 @@ function generateKeystore({ label, mnemonic, password, path, accounts = DEFAULT_
   }
   // generate mnemonic if required
   Lightwallet.keystore.createVault({
+    hdPathString: HD_PATH,
     password,
     seedPhrase: mnemonic || bip39.generateMnemonic(),
   }, (err, ks) => {
